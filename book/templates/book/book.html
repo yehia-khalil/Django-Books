@@ -1,0 +1,34 @@
+{% extends "layout/main.html" %}
+
+{% block content %}
+<h1>{{books.title}}</h1>
+
+<a href="{% url 'index' %}" class="btn btn-primary">Back</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">AUthor</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <th scope="row">{{books.id}}</th>
+                <td>{{books.title}}</td>
+                <td>{{books.author_id}}</td>
+                <td>{{books.description}}</td>
+                <td>{{books.price}}</td>
+                <td>
+                    <a class="btn btn-danger" href="{% url 'destroy' books.id %}">Delete</a>
+                </td>
+            </tr>
+
+
+    </tbody>
+</table>
+
+{% endblock %}

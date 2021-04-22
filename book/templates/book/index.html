@@ -1,0 +1,41 @@
+{% extends "layout/main.html" %}
+
+{% block content %}
+<h1>Bookstore 3adi</h1>
+
+<a href="./create" class="btn btn-primary">Add new Book</a>
+<a href="./create-uuid" class="btn btn-primary">Add new uuid</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">AUthor</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Isbn</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+            <tr>
+                <th scope="row">{{book.id}}</th>
+                <td>{{book.isbn.book_title}}</td>
+                <td>{{book.isbn.author.username}}</td>
+                <td>{{book.description}}</td>
+                <td>{{book.price}} L.E</td>
+                <td>{{book.isbn.isbn_number}}</td>
+                <td>
+                    <a  class="btn btn-primary" href="{% url 'show' book.id %}">Show</a>
+                    <a class="btn btn-secondary" href="{% url 'edit' book.id %}">Edit</a>
+                    <a class="btn btn-danger" href="{% url 'destroy' book.id %}">Delete</a>
+                </td>
+            </tr>
+
+        {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "layout/main.html" %}
+{% block content %}
+<h1>Edit </h1>
+<a href="{% url 'index' %}" class="btn btn-primary">Back</a>
+
+<form action="{% url 'edit' book.id%}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}
