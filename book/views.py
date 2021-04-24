@@ -60,6 +60,7 @@ def show(request, num):
 
 
 def destroy(request, num):
+    print("inside delete of views")
     books = Book.objects.get(id=num)
     books.delete()
     return redirect("index")

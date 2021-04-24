@@ -2,8 +2,6 @@
 class YehiaMiddleWare(object):
     def __init__(self, get_response):
         self.get_response = get_response
-        print(get_response)
-        print("Inside middleware")
 
     def __call__(self, request):
         print(self.get_response(request))

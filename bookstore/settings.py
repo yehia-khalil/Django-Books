@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'book',
-    'accounts'
+    'accounts',
+    'rest_framework',
+    'rest_framework.authtoken'
+
 ]
 
 MIDDLEWARE = [
@@ -49,7 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'book.middleware.YehiaMiddleWare'
+    # 'book.middleware.YehiaMiddleWare'
 ]
 
 ROOT_URLCONF = 'bookstore.urls'
@@ -80,7 +83,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'books',
-        'USER' : 'root',
+        'USER': 'root',
         'PASSWORD': '4244590ass',
     }
 }
@@ -131,3 +134,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 LOGIN_REDIRECT_URL = '/books'
+
+REST_FRAMEWORK = {
+   'DEFAULT_AUTHENTICATION_CLASSES': (
+       'rest_framework.authentication.TokenAuthentication',
+   ),
+#    'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.IsAdminUser',
+#    ),
+}

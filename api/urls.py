@@ -16,13 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
-
+from . import views
+from rest_framework.authtoken.views import obtain_auth_token  # <-- Here
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('books/', include('book.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/', include('accounts.urls')),
-    path('api/books/', include('api.urls')),
-
+    path("", views.index),
+    path("create", views.add),
+    path('login', obtain_auth_token),
+    path('signup', views.signup),
 ]
