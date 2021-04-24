@@ -3,6 +3,15 @@
 {% block content %}
 <h1>Bookstore 3adi</h1>
 
+{% if user.is_authenticated %}
+<h2>
+    Hi {{ user.username }}!
+
+</h2> 
+<p><a href="{% url 'logout' %}">Log Out</a></p>
+
+{% endif %}
+
 <a href="./create" class="btn btn-primary">Add new Book</a>
 <a href="./create-uuid" class="btn btn-primary">Add new uuid</a>
 <table class="table">

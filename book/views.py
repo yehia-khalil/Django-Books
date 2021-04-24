@@ -4,10 +4,11 @@ from .forms import NameForm,IsbnForm
 from django.shortcuts import redirect
 from .models import Book
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-
+@login_required
 def index(request):
     books = Book.objects.all()
     # books = User.Books.all()
