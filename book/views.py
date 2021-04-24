@@ -4,17 +4,18 @@ from .forms import NameForm,IsbnForm
 from django.shortcuts import redirect
 from .models import Book
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 # Create your views here.
 
-@login_required
 def index(request):
     books = Book.objects.all()
     # books = User.Books.all()
     return render(request, 'book/index.html', {"books": books})
 
 
+@login_required
+@permission_required('book.view_book')
 def create(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -51,6 +52,8 @@ def create_uuid(request):
     return render(request, 'book/create-uuid.html', {'form': form})
 
 
+@login_required
+@permission_required('book.view_book')
 def show(request, num):
     books = Book.objects.get(id=num)
     return render(request, 'book/book.html', {"books": books})

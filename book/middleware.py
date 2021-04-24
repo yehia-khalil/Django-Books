@@ -1,7 +1,15 @@
-from django.http import HttpResponse
 
 class YehiaMiddleWare(object):
     def __init__(self, get_response):
-        print("inside middleware")
+        self.get_response = get_response
+        print(get_response)
+        print("Inside middleware")
 
+    def __call__(self, request):
+        print(self.get_response(request))
+        return self.get_response(request)
+
+    def process_exception(self, request, exception): 
+        print("Inside middleware")
+        return None
 
